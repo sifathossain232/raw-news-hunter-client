@@ -2,8 +2,9 @@ import moment from 'moment';
 import React from 'react';
 import { CiBookmark, CiShare2 } from 'react-icons/ci';
 import { FaEye, FaRegStar, FaStar } from 'react-icons/fa';
-import Rating from 'react-rating';
+import { Rating } from '@smastrom/react-rating'
 import { Link } from 'react-router-dom';
+import '@smastrom/react-rating/style.css'
 
 const NewsCard = ({ news }) => {
     const { _id, title, image_url, details, author, total_view, rating } = news;
@@ -31,17 +32,11 @@ const NewsCard = ({ news }) => {
                 <div className='card-body p-5'>
                     <h2 className="text-xl font-bold font-sans my-5">{title}</h2>
                     <figure><img className='rounded-lg my-5' src={image_url} alt="Shoes" /></figure>
-                    <p className='font-sans text-justify'>{details.length < 250 ? <p>{details}</p> : <p>{details.slice(0, 250)}...  <Link className='text-[#FF8C47] font-bold' to={`/news/${_id}`}>Read More</Link></p>}</p>
+                    <p className='font-sans text-justify'>{details.length < 250 ? <>{details}</> : <>{details.slice(0, 250)}...  <Link className='text-[#FF8C47] font-bold' to={`/news/${_id}`}>Read More</Link></>}</p>
                 </div>
                 <div className='flex justify-between py-4 border-t m-5'>
                     <div className='flex gap-3'>
-                        <Rating
-                            placeholderRating={rating.number}
-                            readonly
-                            emptySymbol={<FaRegStar />}
-                            placeholderSymbol={<FaStar className='text-[#FF8C47]' />}
-                            fullSymbol={<FaStar />}
-                        ></Rating>
+                        <Rating style={{ maxWidth: 100 }} value={Math.round(rating?.number || 0)} readOnly />
                         <span>{rating?.number}</span>
                     </div>
                     <div className='flex items-center gap-2'>
