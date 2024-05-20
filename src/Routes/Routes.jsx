@@ -40,7 +40,8 @@ const router = createBrowserRouter([
             {
                 path: ':id',
                 element: <Category></Category>,
-                loader: ({ params }) => fetch(`http://localhost:1000/categories/${params.id}`)
+                loader: ({ params }) => fetch(`https://raw-news-hunter-server.vercel.app/categories/${params.id}`)
+                // loader: ({ params }) => fetch(`http://localhost:1000/categories/${params.id}`)
             }
         ]
     },
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
             {
                 path: ':id',
                 element: <PrivateRoute><News></News></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:1000/news/${params.id}`)
+                loader: ({ params }) => fetch(`https://raw-news-hunter-server.vercel.app/news/${params.id}`)
             }
         ]
     }
