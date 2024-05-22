@@ -2,9 +2,12 @@ import React from 'react';
 import { GoArrowLeft } from 'react-icons/go';
 import { Link, useLoaderData } from 'react-router-dom';
 import EditorsInsight from '../EditorsInsight/EditorsInsight';
+import useTitel from '../../../Hooks/useTitel';
 
 const News = () => {
     const news = useLoaderData();
+    useTitel('News Details')
+
     const {title, image_url, details, category_id} = news;
     return (
         <div className=''>
